@@ -1,12 +1,105 @@
 <!DOCTYPE html>
-<html lang="en">
+<html >
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Botson House Price Prediction</title>
+  <meta charset="UTF-8">
+  <title>ML Project | Team Arvind </title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+
 <body>
-    <h1>Hello world </h1>
+
+	<h1 style="text-align: center" >Boston House Price Prediction</h1>
+    <div>
+        <h2>
+            {% if prediction_text %}
+                <div class="alert alert-success" role="alert">
+                    <h4 class="alert-heading">{{ prediction_text }}</h4>
+                </div>
+            {% endif %}
+         </h2>
+    </div>
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post" class="container mt-5">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="CRIM">CRIM</label>
+                <input type="text" class="form-control" name="CRIM" id="CRIM" placeholder=" Per Capita Crime Rate by Town" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="ZN">ZN</label>
+                <input type="text" class="form-control" name="ZN" id="ZN" placeholder="Proportion of Residential Land Zoned" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="INDUS">INDUS</label>
+                <input type="text" class="form-control" name="INDUS" id="INDUS" placeholder="Proportion of non-retail Business Acres per Town" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="CHAS">Charles River dummy variable</label>
+                <input type="text" class="form-control" name="CHAS" id="CHAS" placeholder="1 if tract bounds river; Else 0)" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="NOX">NOX</label>
+                <input type="text" class="form-control" name="NOX" id="NOX" placeholder="Nitric Oxides Concentration" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="RM">Rooms</label>
+                <input type="text" class="form-control" name="RM" id="RM" placeholder="Rooms Per Dwelling" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="AGE">AGE</label>
+                <input type="text" class="form-control" name="AGE" id="AGE" placeholder="Proportion of owner-occupied units built prior to 1940" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="DIS">DIS</label>
+                <input type="text" class="form-control" name="DIS" id="DIS" placeholder="Weighted Distances to five Boston employment centres" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="RAD">RAD</label>
+                <input type="text" class="form-control" name="RAD" id="RAD" placeholder="Index of accessibility to radial highways" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="TAX">TAX</label>
+                <input type="text" class="form-control" name="TAX" id="TAX" placeholder="Full-value Property-Tax Rate per $10,000" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="PTRATIO">PTRATIO</label>
+                <input type="text" class="form-control" name="PTRATIO" id="PTRATIO" placeholder="Pupil-Teacher Ratio by Town" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="B">B-People</label>
+                <input type="text" class="form-control" name="B" id="B" placeholder="Proportion of Black People by Town" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label for="LSTAT">LSTAT</label>
+                <input type="text" class="form-control" name="LSTAT" id="LSTAT" placeholder="Lower Status of the Population" required>
+            </div>
+        </div>
+        <div class="form-row"> 
+            <div class="form-group col-md-6">
+                <button type="submit" class="btn btn-primary">Predict</button>
+            </div>
+        </div>
+    </form>
+   <br>
+   <br>   
+ </div>
+
+
 </body>
 </html>
